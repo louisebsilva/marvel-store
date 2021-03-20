@@ -10,5 +10,4 @@ pipelines:
       - step:
           name: 'Lint'
           script:
-            - yarn run ui:lint
-      
+            - npm run ui:lint
