@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Login:React.FC = () => {
   const [ userEmail, setUserEmail ] = useState('');
@@ -18,6 +19,7 @@ const Login:React.FC = () => {
       <input type="email" name="userEmail" id="userEmail" placeholder="Digite seu email" onChange={(e) => setUserEmail(e.target.value)} required />
       <label htmlFor="userPassword">Senha</label>
       <input type="password" name="userPassword" id="userPassword" placeholder="Digite sua senha" onChange={(e) => setUserPassword(e.target.value)} required />
+      <button><Link to="/register">Cadastre-se</Link></button>
       <button onClick={(e) => login(e)} disabled={!enabledButton}>Entrar</button>
     </form>
   );

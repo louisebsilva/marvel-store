@@ -1,9 +1,13 @@
 import { render, screen, fireEvent } from '@testing-library/react';
+import { Router } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
 import SignUp from './SignUp';
 
 test('should render component correctly', () => {
-  render(<SignUp />);
+  const history = createMemoryHistory();
+  render(<Router history={history}><SignUp /></Router>);
 
+  expect(screen.getByRole('button', {name: 'Login'})).toBeInTheDocument();
   expect(screen.getByRole('button', {name: 'Registrar'})).toBeInTheDocument();
   expect(screen.getByRole('button', {name: 'Registrar'})).toBeDisabled();
 
@@ -14,7 +18,8 @@ test('should render component correctly', () => {
 });
 
 test('should enable button when input fields are filled', () => {
-  render(<SignUp />);
+  const history = createMemoryHistory();
+  render(<Router history={history}><SignUp /></Router>);
 
   fireEvent.change(screen.getByPlaceholderText('Digite seu nome'), {target: {value: 'Alejandro'}});
   fireEvent.change(screen.getByPlaceholderText('Digite seu email'), {target: {value: 'ale@alejandro.com'}});
