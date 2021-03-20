@@ -2,12 +2,12 @@
 # Use a skeleton to build, test and deploy using manual and parallel steps
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
-image: node:9.7.1
+image: node:10.15.0
 
 pipelines:
   default:
-    - parallel:
-      - step:
-          name: 'Lint'
-          script:
-            - yarn run ui:lint
+    - step:
+      name: 'Lint'
+      script:
+        - yarn
+        - yarn run ui:lint
