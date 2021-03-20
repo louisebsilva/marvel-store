@@ -33,6 +33,7 @@ module.exports = {
     'prefer-const': 'error',
     'brace-style': [ 'error', '1tbs', { allowSingleLine: true } ],
     'array-bracket-spacing': [ 'error', 'always', { singleValue: false } ],
+    'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': [ 1, { extensions: [ '.ts', '.tsx' ] } ]
   }
 };
