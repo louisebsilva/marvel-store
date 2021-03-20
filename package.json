@@ -2,11 +2,23 @@
   "name": "marvel-store",
   "version": "1.0.0",
   "description": "",
+  "private": true,
   "main": "index.js",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "ui:start": "yarn workspace ui start",
+    "ui:test": "yarn workspace ui test",
+    "ui:lint": "yarn workspace ui lint",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "husky": "^5.1.3"
+  }
 }
