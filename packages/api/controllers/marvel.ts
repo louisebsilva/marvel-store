@@ -60,7 +60,7 @@ const filterItemData = (data: any, type: string) => {
 const getOne = async (req: Request, resp: Response) => {
   const hashKey = md5(tsKey + marvelPrivateAPI + marvelPublicAPI);
   const { searchType } = req.query;
-  const searchID = last(req.url.split('?')[0].split('/'));
+  const searchID = last(req.url.split('?')?.[0].split('/'));
 
   const searchURLString = `${BASE_URL}/${searchType}/${searchID}?ts=${tsKey}&apikey=${marvelPublicAPI}&hash=${hashKey}`;
 
