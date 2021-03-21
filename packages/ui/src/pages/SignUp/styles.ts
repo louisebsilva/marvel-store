@@ -39,5 +39,12 @@ export const ButtonsWrapper = styled.div`
     width: 48%;
     height: 35px;
     font-family: 'Bangers', cursive;
+    transition: ease all 0.5s;
+  }
+
+  button:hover:enabled {
+    color: white;
+    background-color: #ff6363;
+    transition: ease all 0.5s;
   }
 `;
