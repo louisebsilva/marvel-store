@@ -11,6 +11,8 @@ test('should render component correctly', () => {
   expect(screen.getByRole('button', {name: 'Registrar'})).toBeInTheDocument();
   expect(screen.getByRole('button', {name: 'Registrar'})).toBeDisabled();
 
+  expect(screen.getByText('Cadastre-se')).toBeInTheDocument();
+
   expect(screen.getByPlaceholderText('Digite seu nome')).toBeInTheDocument();
   expect(screen.getByPlaceholderText('Digite seu email')).toBeInTheDocument();
   expect(screen.getByPlaceholderText('Digite sua senha')).toBeInTheDocument();

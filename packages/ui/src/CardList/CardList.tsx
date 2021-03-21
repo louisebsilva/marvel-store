@@ -1,4 +1,5 @@
 import Card from './Card/Card';
+import { CardListWrapper } from './style';
 
 type Props = {
   cardData: any[];
@@ -6,9 +7,9 @@ type Props = {
 
 const CardList = (props: Props) => {
   return (
-    <section>
+    <CardListWrapper>
       { props.cardData.map((x: any, index: number) => <Card item={x} key={index} /> ) }
-    </section>
+    </CardListWrapper>
   );
 };
 

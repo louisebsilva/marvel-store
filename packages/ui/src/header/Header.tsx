@@ -1,14 +1,15 @@
 import { FaRegUserCircle, FaHeart } from 'react-icons/fa';
+import { HeaderWrapper, Navigation, Title } from './style';
 
 const Header: React.FC = () => {
   return (
-    <header>
-      <h1>Marvel Store</h1>
-      <nav>
+    <HeaderWrapper>
+      <Title>Marvel Store</Title>
+      <Navigation>
         <FaRegUserCircle />
         <FaHeart />
-      </nav>
-    </header>
+      </Navigation>
+    </HeaderWrapper>
   );
 };
 

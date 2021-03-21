@@ -11,6 +11,8 @@ test('should render component correctly', () => {
   expect(screen.getByRole('button', {name: 'Entrar'})).toBeInTheDocument();
   expect(screen.getByRole('button', {name: 'Entrar'})).toBeDisabled();
 
+  expect(screen.getByText('Faça seu Login')).toBeInTheDocument();
+
   expect(screen.getByPlaceholderText('Digite seu email')).toBeInTheDocument();
   expect(screen.getByPlaceholderText('Digite sua senha')).toBeInTheDocument();
 });

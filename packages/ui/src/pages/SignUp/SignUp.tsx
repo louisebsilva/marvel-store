@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ButtonsWrapper, RegisterForm } from './styles';
 
 const SignUp:React.FC = () => {
   const [ username, setUsername ] = useState('');
@@ -16,7 +17,8 @@ const SignUp:React.FC = () => {
   };
 
   return (
-    <form>
+    <RegisterForm>
+      <h2>Cadastre-se</h2>
       <label htmlFor="username">Nome</label>
       <input type="text" name="username" id="username" placeholder="Digite seu nome" onChange={(e) => setUsername(e.target.value)} required />
       <label htmlFor="userEmail">Email</label>
@@ -25,9 +27,11 @@ const SignUp:React.FC = () => {
       <input type="password" name="userPassword" id="userPassword" placeholder="Digite sua senha" onChange={(e) => setUserPassword(e.target.value)} required />
       <label htmlFor="confirmPassword">Confirmar senha</label>
       <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Digite novamente sua senha" onChange={(e) => setConfirmPassword(e.target.value)} required />
-      <button><Link to="/login">Login</Link></button>
-      <button onClick={(e) => signUp(e)} disabled={!enabledButton}>Registrar</button>
-    </form>
+      <ButtonsWrapper>
+        <button><Link to="/login">Login</Link></button>
+        <button onClick={(e) => signUp(e)} disabled={!enabledButton}>Registrar</button>
+      </ButtonsWrapper>
+    </RegisterForm>
   );
 };
 
