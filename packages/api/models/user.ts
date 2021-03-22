@@ -1,11 +1,11 @@
-import { OkPacket } from "mysql2";
+import { OkPacket } from 'mysql2';
 import bcrypt from 'bcrypt';
-import { db } from "../db";
+import { db } from '../db';
 
 const saltRounds = 10;
 
 export const create = (user: any, callback: Function) => {
-  const queryString = "INSERT INTO User (name, user_email, password) VALUES (?, ?, ?)"
+  const queryString = 'INSERT INTO User (name, user_email, password) VALUES (?, ?, ?)';
 
   try {
     bcrypt.hash(user.password, saltRounds, (err, hashPassword) => {
@@ -26,7 +26,7 @@ export const create = (user: any, callback: Function) => {
 };
 
 export const get = (user: any, callback: Function) => {
-  const queryString = "SELECT * FROM User WHERE user_email=?";
+  const queryString = 'SELECT * FROM User WHERE user_email=?';
 
   db.query(
     queryString,
@@ -41,7 +41,7 @@ export const get = (user: any, callback: Function) => {
 };
 
 export const update = (user: any, callback: Function) => {
-  const queryString = "UPDATE User SET name=?, user_email=? WHERE id=?";
+  const queryString = 'UPDATE User SET name=?, user_email=? WHERE id=?';
 
   db.query(
     queryString,
