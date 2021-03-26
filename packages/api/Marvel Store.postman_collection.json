@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "6ca5487c-65ec-4275-8ab6-e631580e9ca2",
+		"_postman_id": "9ae15683-ae1d-43b5-91e7-c05a1d22f8e6",
 		"name": "Marvel Store",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -118,7 +118,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"userName\": \"alejandro\",\n    \"userEmail\": \"ale@alejandro.com\",\n    \"password\": \"ladygaga\"\n}",
+					"raw": "{\n    \"userName\": \"Louise\",\n    \"userEmail\": \"louise@teste.com\",\n    \"password\": \"testelouise\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -135,6 +135,76 @@
 					"path": [
 						"api",
 						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Favorite",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTY3MTY2MDAsImV4cCI6MTYxNjcyMDIwMH0.mvZOguqtgOG4aerfU-kTfWF_nbdtjvNg61YgUHXl_I4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userID\": 1,\n    \"favoriteID\": \"12345\",\n    \"favoriteType\": \"comic\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/favorite",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"favorite"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Favorite",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"type": "text",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTY3MTY4MzAsImV4cCI6MTYxNjcyMDQzMH0.MYQCNcY7d_mNlaEbIhNQpA6j1lhcdhXOxFlHXq82AbU"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"favoriteID\": \"3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/favorite",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"favorite"
 					]
 				}
 			},
@@ -150,7 +220,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"userEmail\": \"ale@alejandro.com\"\n}",
+					"raw": "{\n    \"userEmail\": \"louise@teste.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -173,13 +243,80 @@
 			"response": []
 		},
 		{
+			"name": "Get Favorites",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTY3MTY4MzAsImV4cCI6MTYxNjcyMDQzMH0.MYQCNcY7d_mNlaEbIhNQpA6j1lhcdhXOxFlHXq82AbU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userID\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/favorite",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"favorite"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userEmail\": \"louise@teste.com\",\n    \"password\": \"testelouise\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Update User",
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"userName\": \"ale alejandro\",\n    \"userEmail\": \"ale@alejandro.com\",\n    \"id\": 1\n}",
+					"raw": "{\n    \"userName\": \"Louise Teste\",\n    \"userEmail\": \"louise@teste.com\",\n    \"id\": 1\n}",
 					"options": {
 						"raw": {
 							"language": "json"
