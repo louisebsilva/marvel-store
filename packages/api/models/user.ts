@@ -1,6 +1,6 @@
 import { OkPacket } from 'mysql2';
 import bcrypt from 'bcrypt';
-import { db } from '../db';
+import { db } from '../config/db';
 
 const saltRounds = 10;
 
