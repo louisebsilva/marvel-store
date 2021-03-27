@@ -1,5 +1,5 @@
-import { Router } from "express";
-import { MarvelData } from "../controllers/marvel";
+import { Router } from 'express';
+import { MarvelData } from '../controllers/marvel';
 import { User } from '../controllers/user';
 import { Auth } from '../controllers/auth';
 import { Favorite } from '../controllers/favorite';

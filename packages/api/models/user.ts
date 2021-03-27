@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import { OkPacket } from 'mysql2';
 import bcrypt from 'bcrypt';
-import { db } from '../config/db';
+import db from '../config/db';
 
 const saltRounds = 10;
 
@@ -11,9 +12,9 @@ export const create = (user: any, callback: Function) => {
     bcrypt.hash(user.password, saltRounds, (err, hashPassword) => {
       db.query(
         queryString,
-        [user.userName, user.userEmail, hashPassword],
+        [ user.userName, user.userEmail, hashPassword ],
         (err, result) => {
-          if (err) {callback(err)};
+          if (err) {callback(err);}
 
           const insertId = (<OkPacket> result).insertId;
           callback(null, insertId);
@@ -32,7 +33,7 @@ export const get = (user: any, callback: Function) => {
     queryString,
     [user.userEmail],
     (err, result) => {
-      if (err) {callback(err)};
+      if (err) {callback(err);}
 
       const insertId = (<OkPacket> result);
       callback(null, insertId);
@@ -45,9 +46,9 @@ export const update = (user: any, callback: Function) => {
 
   db.query(
     queryString,
-    [user.userName, user.userEmail, user.id],
+    [ user.userName, user.userEmail, user.id ],
     (err, result) => {
-      if (err) {callback(err)};
+      if (err) {callback(err);}
 
       const insertId = (<OkPacket> result).insertId;
       callback(null, insertId);

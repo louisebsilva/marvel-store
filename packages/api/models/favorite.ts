@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/ban-types */
 import { OkPacket } from 'mysql2';
-import { db } from '../config/db';
+import db from '../config/db';
 
 type FavoriteRequest = {
   userID: number;
@@ -44,7 +44,7 @@ export const deleteFavorite = (favorite: { favoriteID: number; userID: number },
 
   db.query(
     queryString,
-    [favorite.favoriteID, favorite.userID],
+    [ favorite.favoriteID, favorite.userID ],
     (err, result) => {
       if (err) {callback(err);}
 

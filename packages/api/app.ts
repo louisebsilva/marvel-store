@@ -1,9 +1,9 @@
-import * as dotenv from "dotenv";
-import express from "express";
-import * as bodyParser from "body-parser";
-import router from "./routes/routes";
+import * as dotenv from 'dotenv';
+import express from 'express';
+import * as bodyParser from 'body-parser';
+import router from './routes/routes';
 
-const app = express();
+export const app = express();
 dotenv.config();
 
 app
