@@ -60,19 +60,19 @@ type Favorite = {
   userID: number;
   favoriteID: string;
   favoriteType: 'characters' | 'comics';
+  favoriteName: string;
+  favoriteImage: string;
 };
 
-export const createFavorite = async ({userID, favoriteID, favoriteType}: Favorite) => {
-  return await api.post(`${baseUrl}/favorite`, {
-    data: { favorite: { userID, favoriteID, favoriteType } }
-  });
+export const createFavorite = async ({userID, favoriteID, favoriteType, favoriteName, favoriteImage}: Favorite) => {
+  return await api.post(`${baseUrl}/favorite`, {userID, favoriteID, favoriteType, favoriteName, favoriteImage});
 };
 
 export const getFavorites = async (userID: number) => {
   return await api.get(`${baseUrl}/favorite?userID=${userID}`);
 };
 
-export const removeFavorite = async ({userID, favoriteID}: Omit<Favorite, 'favoriteType'>) => {
+export const removeFavorite = async ({userID, favoriteID}: any) => {
   return api.delete(`${baseUrl}/favorite`, {
     data: { favorite: { userID, favoriteID } }
   });

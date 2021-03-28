@@ -156,13 +156,15 @@ describe('Client test', () => {
       const favoriteData = {
         userID: 1,
         favoriteID: '911',
-        favoriteType: 'comics'
+        favoriteType: 'comics',
+        favoriteImage: 'image',
+        favoriteName: 'chromatica'
       };
 
-      const result = createFavorite({ userID: 1, favoriteID: '911', favoriteType: 'comics' });
+      const result = createFavorite({ userID: 1, favoriteID: '911', favoriteType: 'comics', favoriteImage: 'image', favoriteName: 'chromatica' });
 
       expect(axios.post).toHaveBeenCalledTimes(1);
-      expect(axios.post).toHaveBeenCalledWith(`${baseUrl}/favorite`, {data: { favorite: {...favoriteData}}});
+      expect(axios.post).toHaveBeenCalledWith(`${baseUrl}/favorite`, {'favoriteID': '911', 'favoriteImage': 'image', 'favoriteName': 'chromatica', 'favoriteType': 'comics', 'userID': 1});
       result.then(response => expect(response).toStrictEqual(data));
     });
   });

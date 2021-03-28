@@ -13,6 +13,7 @@ export const Title = styled.h1`
   text-align: center;
   width: 80%;
   margin-left: 10%;
+  cursor: pointer;
 `;
 
 export const Navigation = styled.nav`
