@@ -117,10 +117,10 @@ describe('Client test', () => {
 
       mockedAxios.get.mockImplementationOnce(() => Promise.resolve(data));
 
-      const result = getMarvelData('comic');
+      const result = getMarvelData('comic', 'hulk');
 
       expect(axios.get).toHaveBeenCalledTimes(1);
-      expect(axios.get).toHaveBeenCalledWith(`${baseUrl}/marvel?searchType=comic`);
+      expect(axios.get).toHaveBeenCalledWith(`${baseUrl}/marvel?searchType=comic&textSearch=hulk`);
       result.then(response => expect(response).toStrictEqual(data));
     });
   });

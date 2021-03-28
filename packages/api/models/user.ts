@@ -44,9 +44,11 @@ export const get = (user: any, callback: Function) => {
 export const update = (user: any, callback: Function) => {
   const queryString = 'UPDATE User SET name=?, user_email=? WHERE id=?';
 
+  const { user: userData } = user.data;
+
   db.query(
     queryString,
-    [ user.userName, user.userEmail, user.id ],
+    [ userData.userName, userData.userEmail, userData.id ],
     (err, result) => {
       if (err) {callback(err);}
 
