@@ -23,13 +23,24 @@ const filterAllData = (data: any, type: string) => {
 
 const getAll = async (req: Request, resp: Response) => {
   const hashKey = md5(tsKey + marvelPrivateAPI + marvelPublicAPI);
-  const { searchType } = req.query;
-  const searchURLString = `${BASE_URL}/${searchType}?ts=${tsKey}&apikey=${marvelPublicAPI}&hash=${hashKey}`;
+  const { searchType, textSearch } = req.query;
 
   if (isNil(searchType) || ((searchType !== 'comics') && (searchType !== 'characters'))) {
     return resp.status(400).send({
       message: 'error'
     });
+  }
+
+  let searchURLString = `${BASE_URL}/${searchType}?ts=${tsKey}&apikey=${marvelPublicAPI}&hash=${hashKey}`;
+
+  if (textSearch) {
+    if (searchType === 'comics') {
+      searchURLString += `&title=${textSearch}&limit=100`;
+    } else {
+      searchURLString += `&name=${textSearch}&limit=100`;
+    }
+  } else {
+    searchURLString += '&limit=100';
   }
 
   try {

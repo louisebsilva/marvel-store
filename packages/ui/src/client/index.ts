@@ -48,8 +48,8 @@ export const updateUserProfile = async ({userName, userEmail, id}: UserProfile) 
   return await api.put(`${baseUrl}/user`, { data: {user: { userName, userEmail, id }} });
 };
 
-export const getMarvelData = async (term: string) => {
-  return api.get(`${baseUrl}/marvel?searchType=${term}`);
+export const getMarvelData = async (term: string, textSearch: string) => {
+  return api.get(`${baseUrl}/marvel?searchType=${term}&textSearch=${textSearch}`);
 };
 
 export const getMarvelDataByID = async (itemID: string, term: string) => {

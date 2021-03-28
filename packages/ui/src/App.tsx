@@ -19,7 +19,7 @@ const App: React.FC = () => {
     setSearchInput('');
 
     try {
-      const result = await getMarvelData(searchOptions);
+      const result = await getMarvelData(searchOptions, searchInput);
 
       setList(result.data.data);
     } catch (error) {
