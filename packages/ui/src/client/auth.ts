@@ -12,6 +12,7 @@ export const login = (token: string, userData: any) => {
   localStorage.setItem(USER_KEY, userData);
 };
 
-/*export const logout = () => {
+export const logout = () => {
   localStorage.removeItem(TOKEN_KEY);
-};*/
+  localStorage.removeItem(USER_KEY);
+};

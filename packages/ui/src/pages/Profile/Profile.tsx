@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { FaEdit } from 'react-icons/fa';
 import Header from '../../header/Header';
 import { ProfileForm, SectionWrapper } from './style';
-import { getUser } from '../../client/auth';
+import { getUser, logout } from '../../client/auth';
 import { updateUserProfile } from '../../client/index';
 import { useHistory } from 'react-router';
 
@@ -31,6 +31,13 @@ const Profile:React.FC = () => {
     history.push('/');
   };
 
+  const logoutUser = async (e: any) => {
+    e.preventDefault();
+
+    await logout();
+    history.push('/login');
+  };
+
   return (
     <>
       <Header />
@@ -46,7 +53,10 @@ const Profile:React.FC = () => {
           <input type="email" name="userEmail" id="userEmail" onChange={(e) => setUserEmail(e.target.value)} value={userEmail} disabled={!userEmailInput} />
           <FaEdit onClick={() => setUserEmailInput(!userEmailInput)} />
         </SectionWrapper>
-        <button onClick={(e) => updateProfile(e)}>Alterar</button>
+        <div>
+          <button onClick={(e) => logoutUser(e)}>Logout</button>
+          <button onClick={(e) => updateProfile(e)}>Alterar</button>
+        </div>
       </ProfileForm>
     </>
   );
