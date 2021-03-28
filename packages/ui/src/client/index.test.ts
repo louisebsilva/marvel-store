@@ -79,10 +79,10 @@ describe('Client test', () => {
 
       mockedAxios.get.mockImplementationOnce(() => Promise.resolve(data));
 
-      const result = getUserProfile('alice@wonderland.com', 'monsterfame');
+      const result = getUserProfile('alice@wonderland.com');
 
       expect(axios.get).toHaveBeenCalledTimes(1);
-      expect(axios.get).toHaveBeenCalledWith(`${baseUrl}/user?userEmail=alice@wonderland.com`, {'headers': {'token': 'monsterfame'}});
+      expect(axios.get).toHaveBeenCalledWith(`${baseUrl}/user?userEmail=alice@wonderland.com`);
       result.then(response => expect(response).toStrictEqual(data));
     });
   });
@@ -101,10 +101,10 @@ describe('Client test', () => {
 
       mockedAxios.put.mockImplementationOnce(() => Promise.resolve(data));
 
-      const result = updateUserProfile(updateData, 'monsterfame');
+      const result = updateUserProfile(updateData);
 
       expect(axios.put).toHaveBeenCalledTimes(1);
-      expect(axios.put).toHaveBeenCalledWith(`${baseUrl}/user`, {'headers': {'token': 'monsterfame'}, data: {user: {...updateData}}});
+      expect(axios.put).toHaveBeenCalledWith(`${baseUrl}/user`, {data: {user: {...updateData}}});
       result.then(response => expect(response).toStrictEqual(data));
     });
   });
@@ -117,10 +117,10 @@ describe('Client test', () => {
 
       mockedAxios.get.mockImplementationOnce(() => Promise.resolve(data));
 
-      const result = getMarvelData('comic', 'monsterfame');
+      const result = getMarvelData('comic');
 
       expect(axios.get).toHaveBeenCalledTimes(1);
-      expect(axios.get).toHaveBeenCalledWith(`${baseUrl}/marvel?searchType=comic`, {'headers': {'token': 'monsterfame'}});
+      expect(axios.get).toHaveBeenCalledWith(`${baseUrl}/marvel?searchType=comic`);
       result.then(response => expect(response).toStrictEqual(data));
     });
   });
@@ -133,10 +133,10 @@ describe('Client test', () => {
 
       mockedAxios.get.mockImplementationOnce(() => Promise.resolve(data));
 
-      const result = getMarvelDataByID('venus', 'comic', 'monsterfame');
+      const result = getMarvelDataByID('venus', 'comic');
 
       expect(axios.get).toHaveBeenCalledTimes(1);
-      expect(axios.get).toHaveBeenCalledWith(`${baseUrl}/marvel/venus?searchType=comic`, {'headers': {'token': 'monsterfame'}});
+      expect(axios.get).toHaveBeenCalledWith(`${baseUrl}/marvel/venus?searchType=comic`);
       result.then(response => expect(response).toStrictEqual(data));
     });
   });
@@ -162,7 +162,7 @@ describe('Client test', () => {
       const result = createFavorite({ userID: 1, favoriteID: '911', favoriteType: 'comics' });
 
       expect(axios.post).toHaveBeenCalledTimes(1);
-      expect(axios.post).toHaveBeenCalledWith(`${baseUrl}/favorite`, {'headers': {'token': ''}, data: { favorite: {...favoriteData}}});
+      expect(axios.post).toHaveBeenCalledWith(`${baseUrl}/favorite`, {data: { favorite: {...favoriteData}}});
       result.then(response => expect(response).toStrictEqual(data));
     });
   });
@@ -184,7 +184,7 @@ describe('Client test', () => {
       const result = getFavorites(1);
 
       expect(axios.get).toHaveBeenCalledTimes(1);
-      expect(axios.get).toHaveBeenCalledWith(`${baseUrl}/favorite?userID=1`, {'headers': {'token': ''}});
+      expect(axios.get).toHaveBeenCalledWith(`${baseUrl}/favorite?userID=1`);
       result.then(response => expect(response).toStrictEqual(data));
     });
   });
@@ -205,7 +205,7 @@ describe('Client test', () => {
       const result = removeFavorite(favoriteData);
 
       expect(axios.delete).toHaveBeenCalledTimes(1);
-      expect(axios.delete).toHaveBeenCalledWith(`${baseUrl}/favorite`, {'headers': {'token': ''}, data: { favorite: {...favoriteData}}});
+      expect(axios.delete).toHaveBeenCalledWith(`${baseUrl}/favorite`, {data: { favorite: {...favoriteData}}});
       result.then(response => expect(response).toStrictEqual(data));
     });
   });
