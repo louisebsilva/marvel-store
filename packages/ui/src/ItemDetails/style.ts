@@ -30,6 +30,19 @@ export const ContentWrapper = styled.div`
   span {
     font-weight: bold;
   }
+
+  button {
+    margin-top: 3%;
+    font-family: 'Bangers', cursive;
+    font-size: 1.4rem;
+
+    transition: ease all 0.3s;
+  }
+
+  button:hover {
+    background-color: #ff6363;
+    transition: ease all 0.3s;
+  }
 `;
 
 export const ItemsTypeWrapper = styled.p`

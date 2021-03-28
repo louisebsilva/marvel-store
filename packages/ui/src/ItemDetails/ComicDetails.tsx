@@ -1,4 +1,6 @@
 import { useHistory } from 'react-router';
+import { createFavorite } from '../client';
+import { getUser } from '../client/auth';
 import { ArticleWrapper, ContentWrapper, ItemsTypeWrapper } from './style';
 
 type Props = {
@@ -25,6 +27,17 @@ const ComicDetails = (props: Props) => {
     );
   };
 
+  const addFavorite = async () => {
+    try {
+      const user = JSON.parse(getUser());
+
+      await createFavorite({ userID: user.id, favoriteID: data.id, favoriteType: 'comics', favoriteName: data.title, favoriteImage: imageUrl });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
   return (
     <ArticleWrapper>
       <img src={imageUrl} alt={data?.title} />
@@ -39,6 +52,7 @@ const ComicDetails = (props: Props) => {
             ? <ItemsTypeWrapper>Personagens: {renderCharacters(data.characters.items)}</ItemsTypeWrapper>
             : null
         }
+        <button onClick={() => addFavorite()}>Favoritar</button>
       </ContentWrapper>
     </ArticleWrapper>
   );
