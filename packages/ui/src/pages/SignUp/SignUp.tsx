@@ -36,7 +36,7 @@ const SignUp:React.FC = () => {
       <label htmlFor="confirmPassword">Confirmar senha</label>
       <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Digite novamente sua senha" onChange={(e) => setConfirmPassword(e.target.value)} required />
       <ButtonsWrapper>
-        <button><Link to="/login">Login</Link></button>
+        <button onClick={() => history.push('/login')}>Login</button>
         <button onClick={(e) => signUp(e)} disabled={!enabledButton}>Registrar</button>
       </ButtonsWrapper>
     </RegisterForm>

@@ -28,7 +28,7 @@ const Login:React.FC = () => {
       <label htmlFor="userPassword">Senha</label>
       <input type="password" name="userPassword" id="userPassword" placeholder="Digite sua senha" onChange={(e) => setUserPassword(e.target.value)} required />
       <ButtonsWrapper>
-        <button><Link to="/register">Cadastre-se</Link></button>
+        <button onClick={() => history.push('/register')}>Cadastre-se</button>
         <button onClick={(e) => login(e)} disabled={!enabledButton}>Entrar</button>
       </ButtonsWrapper>
     </LoginForm>
