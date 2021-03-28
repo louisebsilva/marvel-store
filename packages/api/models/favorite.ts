@@ -24,7 +24,7 @@ export const create = (favorite: FavoriteRequest, callback: Function) => {
   );
 };
 
-export const get = (favorite: { userID: number; }, callback: Function) => {
+export const get = (favorite: any, callback: Function) => {
   const queryString = 'SELECT * FROM Favorite WHERE id_user=?';
 
   db.query(
@@ -40,7 +40,7 @@ export const get = (favorite: { userID: number; }, callback: Function) => {
 };
 
 export const deleteFavorite = (favorite: { favoriteID: number; userID: number }, callback: Function) => {
-  const queryString = 'DELETE FROM Favorite WHERE favorite_id=? AND id_user=?';
+  const queryString = 'DELETE FROM Favorite WHERE favorite_id = ? AND id_user=?';
 
   db.query(
     queryString,

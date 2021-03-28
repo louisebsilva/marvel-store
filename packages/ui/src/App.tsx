@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CardList from './CardList/CardList';
 import Header from './header/Header';
 import mockData from './mock.json';
 import { SearchForm } from './style';
+import * as client from './client/index';
 
 const options = [ 'Comic', 'Character' ];
 
@@ -10,6 +11,32 @@ const App: React.FC = () => {
   const [ searchInput, setSearchInput ] = useState('');
   const [ searchOptions, setSearchOptions ] = useState(options[0]);
   const [ list, setList ] = useState([]);
+
+  useEffect(() => {
+    const loginData = {
+      userEmail: 'ale@alejandro.com',
+      password: 'ladygaga'
+    };
+
+    const registerData = {
+      userName: 'Judas',
+      userEmail: 'judas@judas.com',
+      password: 'thefamemonster'
+    };
+
+    const favoriteData = {
+      userID: 1,
+      favoriteID: '82967'
+    };
+
+    // client.createUser(registerData).then((result) => console.log(result.data));
+    client.login(loginData).then((result) => {
+      console.log(result.data.token)
+      client.removeFavorite({ favoriteID: '12345', userID: 1 }, result.data.token)
+        .then((res) => console.log(res.data))
+        .catch(err => console.log(err));
+    });
+  }, []);
 
   const search = (e: any) => {
     e.preventDefault();

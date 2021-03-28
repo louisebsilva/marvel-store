@@ -15,7 +15,7 @@ const createUser = async (req: Request, resp: Response) => {
 };
 
 const getUser = async (req: Request, resp: Response) => {
-  const user = req.body;
+  const user = req.query;
 
   userModel.get(user, (err: Error, userResult: any) => {
     if (err) {

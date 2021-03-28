@@ -20,7 +20,7 @@ describe('GET /favorite', () => {
       .then(res => {
         expect(res.status).toEqual(200);
         expect(res.body).toHaveProperty('result');
-        expect(res.body.result).toStrictEqual([{'favorite_id': '1009351', 'id': 1, 'id_user': 1, 'type': 'comic'}]);
+        expect(res.body.result).toStrictEqual([{'favorite_id': '12345', 'id': 2, 'id_user': 1, 'type': 'comics'}]);
         done();
       });
   });

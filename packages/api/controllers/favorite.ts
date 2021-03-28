@@ -15,9 +15,9 @@ const createFavorite = async (req: Request, resp: Response) => {
 };
 
 const getFavorites = async (req: Request, resp: Response) => {
-  const favorite = req.body;
+  const userID = req.query;
 
-  favoriteModel.get(favorite, (err: Error, favoriteResult: any) => {
+  favoriteModel.get(userID, (err: Error, favoriteResult: any) => {
     if (err) {
       return resp.status(500).json({'message': err.message});
     }

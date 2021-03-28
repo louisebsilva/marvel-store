@@ -9,9 +9,6 @@
       "packages/*"
     ]
   },
-  "engines": {
-    "node": "14.x"
-  },
   "scripts": {
     "ui:start": "yarn workspace ui start",
     "ui:test": "yarn workspace ui test",

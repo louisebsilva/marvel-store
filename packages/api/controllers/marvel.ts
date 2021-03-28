@@ -3,7 +3,7 @@ import axios from 'axios';
 import md5 from 'md5';
 import { isNil, pick, last } from 'ramda';
 
-import * as dotenv from "dotenv";
+import * as dotenv from 'dotenv';
 dotenv.config();
 
 const BASE_URL = 'https://gateway.marvel.com:443/v1/public';
@@ -13,11 +13,11 @@ const marvelPrivateAPI = process.env.API_PRIV_KEY_MARVEL;
 
 const filterAllData = (data: any, type: string) => {
   if (type === 'characters') {
-    return data.results.map((x: any) => pick(['id', 'name', 'thumbnail'], x));
+    return data.results.map((x: any) => pick([ 'id', 'name', 'thumbnail' ], x));
   }
 
   if (type === 'comics') {
-    return data.results.map((x: any) => pick(['id', 'title', 'thumbnail'], x));
+    return data.results.map((x: any) => pick([ 'id', 'title', 'thumbnail' ], x));
   }
 };
 
@@ -37,7 +37,6 @@ const getAll = async (req: Request, resp: Response) => {
     const filteredData = filterAllData(result.data.data, searchType.toString());
 
     return resp.status(200).send({
-      message: 'Alejandro',
       data: filteredData
     });
   } catch (error) {
@@ -49,11 +48,11 @@ const getAll = async (req: Request, resp: Response) => {
 
 const filterItemData = (data: any, type: string) => {
   if (type === 'characters') {
-    return data.results.map((x: any) => pick(['id', 'name', 'modified', 'description', 'comics', 'thumbnail'], x));
+    return data.results.map((x: any) => pick([ 'id', 'name', 'modified', 'description', 'comics', 'thumbnail' ], x));
   }
 
   if (type === 'comics') {
-    return data.results.map((x: any) => pick(['id', 'title', 'modified', 'pageCount', 'description', 'characters', 'thumbnail'], x));
+    return data.results.map((x: any) => pick([ 'id', 'title', 'modified', 'pageCount', 'description', 'characters', 'thumbnail' ], x));
   }
 };
 
@@ -75,7 +74,6 @@ const getOne = async (req: Request, resp: Response) => {
     const filteredData = filterItemData(result.data.data, searchType.toString());
 
     return resp.status(200).send({
-      message: 'Alejandro',
       data: filteredData
     });
   } catch (error) {
