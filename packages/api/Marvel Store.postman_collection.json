@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "9ae15683-ae1d-43b5-91e7-c05a1d22f8e6",
+		"_postman_id": "931ed1c8-ac89-4963-a12d-175082300e53",
 		"name": "Marvel Store",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -9,7 +9,13 @@
 			"name": "Get All Characters",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "token",
+						"value": "token",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "http://localhost:3001/api/marvel?searchType=characters",
 					"protocol": "http",
@@ -35,7 +41,13 @@
 			"name": "Get All Comics",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "token",
+						"value": "token",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "http://localhost:3001/api/marvel?searchType=comics",
 					"protocol": "http",
@@ -61,7 +73,13 @@
 			"name": "Get One Character",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "token",
+						"value": "token",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "http://localhost:3001/api/marvel/1009351?searchType=characters",
 					"protocol": "http",
@@ -147,13 +165,13 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTY3MTY2MDAsImV4cCI6MTYxNjcyMDIwMH0.mvZOguqtgOG4aerfU-kTfWF_nbdtjvNg61YgUHXl_I4",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTY4ODY0NjksImV4cCI6MTYxNjg5MDA2OX0.ZxQMZHmRr64VwLjCrEcnCUfS4QK8V35k7H2StHN4edw",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"userID\": 1,\n    \"favoriteID\": \"12345\",\n    \"favoriteType\": \"comic\"\n}",
+					"raw": "{\n    \"userID\": 1,\n    \"favoriteID\": \"12345\",\n    \"favoriteType\": \"comics\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -217,10 +235,16 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTY4ODE5ODUsImV4cCI6MTYxNjg4NTU4NX0.4Bdnc3ln9zeLL0-CWtJrSoc-IZozJp2e9Tq-53DMmbY",
+						"type": "text"
+					}
+				],
 				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"userEmail\": \"louise@teste.com\"\n}",
+					"mode": "formdata",
+					"formdata": [],
 					"options": {
 						"raw": {
 							"language": "json"
@@ -228,7 +252,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3001/api/user",
+					"raw": "http://localhost:3001/api/user?userEmail=louise@teste.com",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -237,6 +261,12 @@
 					"path": [
 						"api",
 						"user"
+					],
+					"query": [
+						{
+							"key": "userEmail",
+							"value": "louise@teste.com"
+						}
 					]
 				}
 			},
@@ -287,7 +317,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"userEmail\": \"louise@teste.com\",\n    \"password\": \"testelouise\"\n}",
+					"raw": "{\n    \"userEmail\": \"teste@louise.com\",\n    \"password\": \"testelouise\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -313,10 +343,16 @@
 			"name": "Update User",
 			"request": {
 				"method": "PUT",
-				"header": [],
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTY5NTE3MjUsImV4cCI6MTYxNjk1NTMyNX0.N5AGxd6Kpdvdx88DaugMEoRXbhDKl7nZvIfKMXWPgxo",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"userName\": \"Louise Teste\",\n    \"userEmail\": \"louise@teste.com\",\n    \"id\": 1\n}",
+					"raw": "{\n    \"userName\": \"Louise Teste\",\n    \"userEmail\": \"teste@louise.com\",\n    \"id\": 4\n}",
 					"options": {
 						"raw": {
 							"language": "json"
