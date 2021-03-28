@@ -10,4 +10,12 @@ export const CardListWrapper = styled.section`
     width: 30%;
     content: '';
   }
+
+  p {
+    width: 100%;
+    text-align:center;
+    font-family: 'Bangers', cursive;
+    margin-top: 5%;
+    font-size: 1.8rem;
+  }
 `;

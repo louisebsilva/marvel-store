@@ -5,6 +5,7 @@ import { getMarvelDataByID } from '../client/index';
 import Loader from '../Loader/Loader';
 import ComicDetails from './ComicDetails';
 import CharacterDetails from './CharacterDetails';
+import { NoInfoWrapper } from './style';
 
 const ItemDetails = () => {
   const [ details, setDetails ] = useState({});
@@ -30,6 +31,8 @@ const ItemDetails = () => {
     if(loading) {
       return <Loader />;
     }
+
+    if (Object.keys(details).length === 0) return <NoInfoWrapper>Nenhuma informação para exibir</NoInfoWrapper>;
 
     return strippedURL[2] === 'comics' ? <ComicDetails data={details} /> : <CharacterDetails data={details} />;
   };

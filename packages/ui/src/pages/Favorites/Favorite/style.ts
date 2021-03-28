@@ -13,11 +13,11 @@ export const FavoriteWrapper = styled.article`
 
   img {
     width: 100%;
-    height: 90%;
+    height: 80%;
   }
 
   h3 {
-    height: 10%;
+    height: 20%;
     font-size: 1.5rem;
     font-weight: bold;
     display: flex;

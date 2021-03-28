@@ -4,6 +4,7 @@ import { getFavorites } from '../../client/index';
 import { getUser } from '../../client/auth';
 import Favorite from './Favorite/Favorite';
 import { SectionWrapper } from './styles';
+import Loader from '../../Loader/Loader';
 
 export type FavoriteType = {
   id: number;
@@ -31,8 +32,6 @@ const Favorites = () => {
     }
   }, []);
 
-  console.log(favorites)
-
   const renderComics = () => {
     return favorites
       .filter((x) => x.type === 'comics')
@@ -45,13 +44,28 @@ const Favorites = () => {
       .map((x, index: number) => <Favorite data={x} key={index} />);
   };
 
+  const renderContent = () => {
+    if (loading) return <Loader />;
+    if (favorites.length === 0) return <p>Nenhum conteúdo para exibir</p>;
+
+    return (
+      <SectionWrapper>
+        <section>
+          <h2>Quadrinhos</h2>
+          <div>{renderComics()}</div>
+        </section>
+        <section>
+          <h2>Personagens</h2>
+          <div>{renderCharacters()}</div>
+        </section>
+      </SectionWrapper>
+    );
+  };
+
   return (
     <div>
       <Header />
-      <SectionWrapper>
-        <section>{renderComics()}</section>
-        <section>{renderCharacters()}</section>
-      </SectionWrapper>
+      {renderContent()}
     </div>
   );
 };

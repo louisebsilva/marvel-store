@@ -17,8 +17,12 @@ export const ProfileForm = styled.form`
     margin-bottom: 5%;
   }
 
+  div {
+    display: flex;
+  }
+
   button {
-    width: 50%;
+    width: 40%;
     margin: 2% auto auto auto;
     height: 40px;
     font-family: 'Bangers', cursive;
