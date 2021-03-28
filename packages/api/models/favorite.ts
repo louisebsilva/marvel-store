@@ -6,15 +6,17 @@ import db from '../config/db';
 type FavoriteRequest = {
   userID: number;
   favoriteID: number;
-  favoriteType: 'character' | 'comic';
+  favoriteType: 'characters' | 'comics';
+  favoriteName: string;
+  favoriteImage: string;
 };
 
 export const create = (favorite: FavoriteRequest, callback: Function) => {
-  const queryString = 'INSERT INTO Favorite (id_user, favorite_id, type) VALUES (?, ?, ?)';
+  const queryString = 'INSERT INTO Favorite (id_user, favorite_id, type, favorite_name, favorite_image) VALUES (?, ?, ?, ?, ?)';
 
   db.query(
     queryString,
-    [ favorite.userID, favorite.favoriteID, favorite.favoriteType ],
+    [ favorite.userID, favorite.favoriteID, favorite.favoriteType, favorite.favoriteName, favorite.favoriteImage ],
     (err, result) => {
       if (err) {callback(err);}
 
@@ -39,8 +41,8 @@ export const get = (favorite: any, callback: Function) => {
   );
 };
 
-export const deleteFavorite = (favorite: { favoriteID: number; userID: number }, callback: Function) => {
-  const queryString = 'DELETE FROM Favorite WHERE favorite_id = ? AND id_user=?';
+export const deleteFavorite = ({favorite}: any, callback: Function) => {
+  const queryString = 'DELETE FROM Favorite WHERE favorite_id=? AND id_user=?';
 
   db.query(
     queryString,

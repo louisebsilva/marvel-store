@@ -6,6 +6,7 @@ import Profile from '../pages/Profile/Profile';
 import SignUp from '../pages/SignUp/SignUp';
 import { isAuthenticated } from '../client/auth';
 import ItemDetails from '../ItemDetails/ItemDetails';
+import Favorites from '../pages/Favorites/Favorites';
 
 const PrivateRoute = ({ component, ...rest }: RouteProps) => {
   if (!component) {
@@ -32,6 +33,7 @@ const Router = () => {
         <Route path="/login" exact component={Login} />
         <PrivateRoute path="/" exact component={App} />
         <PrivateRoute path="/profile" exact component={Profile} />
+        <PrivateRoute path="/favorites" exact component={Favorites} />
         <PrivateRoute path="/item/comics/:id" component={ItemDetails} />
         <PrivateRoute path="/item/characters/:id" component={ItemDetails} />
       </Switch>

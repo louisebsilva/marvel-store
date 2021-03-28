@@ -31,9 +31,9 @@ const getFavorites = async (req: Request, resp: Response) => {
 };
 
 const deleteFavorite = async (req: Request, resp: Response) => {
-  const user = req.body;
+  const favorite = req.body;
 
-  favoriteModel.deleteFavorite(user, (err: Error, favoriteResult: any) => {
+  favoriteModel.deleteFavorite(favorite, (err: Error, favoriteResult: any) => {
     if (err) {
       return resp.status(500).json({'message': err.message});
     }
