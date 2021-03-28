@@ -1,5 +1,5 @@
 import Card from './Card/Card';
-import { CardListWrapper } from './style';
+import { NoInfoWrapper, CardListWrapper } from './style';
 
 type Props = {
   cardData: any[];
@@ -9,7 +9,7 @@ const CardList = (props: Props) => {
   const { cardData } = props;
 
   const renderContent = () => {
-    if (cardData.length === 0) return <p>Nenhum conteúdo para exibir</p>;
+    if (cardData.length === 0) return <NoInfoWrapper>Nenhum conteúdo para exibir</NoInfoWrapper>;
 
     return cardData.map((x: any, index: number) => <Card item={x} key={index} />);
   };

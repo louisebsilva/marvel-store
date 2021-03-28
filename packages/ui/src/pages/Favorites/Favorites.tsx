@@ -3,7 +3,7 @@ import Header from '../../header/Header';
 import { getFavorites } from '../../client/index';
 import { getUser } from '../../client/auth';
 import Favorite from './Favorite/Favorite';
-import { SectionWrapper } from './styles';
+import { NoInfoWrapper, SectionWrapper } from './styles';
 import Loader from '../../Loader/Loader';
 
 export type FavoriteType = {
@@ -46,7 +46,7 @@ const Favorites = () => {
 
   const renderContent = () => {
     if (loading) return <Loader />;
-    if (favorites.length === 0) return <p>Nenhum conteúdo para exibir</p>;
+    if (favorites.length === 0) return <NoInfoWrapper>Nenhum conteúdo para exibir</NoInfoWrapper>;
 
     return (
       <SectionWrapper>
