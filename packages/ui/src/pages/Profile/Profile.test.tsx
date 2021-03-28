@@ -3,6 +3,16 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import Profile from './Profile';
 
+beforeEach(() => {
+  Object.defineProperty(window, 'localStorage', {
+    value: {
+      getItem: jest.fn(() => '{"id":3,"name":"Alejandro","user_email":"ale@alejandro.com"}'),
+      setItem: jest.fn(() => null)
+    },
+    writable: true
+  });
+});
+
 test('should render component correctly', () => {
   const history = createMemoryHistory();
   render(<Router history={history}><Profile /></Router>);
