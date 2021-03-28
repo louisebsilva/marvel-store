@@ -1,26 +1,34 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { ButtonsWrapper, RegisterForm } from './styles';
+import { createUser } from '../../client/index';
 
 const SignUp:React.FC = () => {
-  const [ username, setUsername ] = useState('');
+  const [ userName, setUserName ] = useState('');
   const [ userEmail, setUserEmail ] = useState('');
   const [ userPassword, setUserPassword ] = useState('');
   const [ confirmPassword, setConfirmPassword ] = useState('');
+  const history = useHistory();
 
-  const enabledButton = (username.length !== 0) && (userEmail.length !== 0) && (userPassword.length !== 0) && (confirmPassword.length !== 0);
+  const enabledButton = (userName.length !== 0) && (userEmail.length !== 0) && (userPassword.length !== 0) && (confirmPassword.length !== 0);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const signUp = (e: any) => {
+  const signUp = async (e: any) => {
     e.preventDefault();
-    console.log('SignUp!!!!!');
+
+    try {
+      await createUser({userName, userEmail, password: userPassword});
+      history.push('/');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <RegisterForm>
       <h2>Cadastre-se</h2>
-      <label htmlFor="username">Nome</label>
-      <input type="text" name="username" id="username" placeholder="Digite seu nome" onChange={(e) => setUsername(e.target.value)} required />
+      <label htmlFor="userName">Nome</label>
+      <input type="text" name="userName" id="userName" placeholder="Digite seu nome" onChange={(e) => setUserName(e.target.value)} required />
       <label htmlFor="userEmail">Email</label>
       <input type="email" name="userEmail" id="userEmail" placeholder="Digite seu email" onChange={(e) => setUserEmail(e.target.value)} required />
       <label htmlFor="userPassword">Senha</label>
