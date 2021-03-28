@@ -32,7 +32,8 @@ const login = async (req: Request, resp: Response) => {
           { expiresIn: '1h' }
         );
 
-        return resp.status(200).json({'token': token});
+        const { password, ...userWithoutPassword} = userResult[0];
+        return resp.status(200).json({'token': token, 'user': userWithoutPassword});
       }
 
       return resp.status(409).json({success: false, message: 'Passwords do not match'});
