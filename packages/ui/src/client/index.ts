@@ -1,6 +1,21 @@
 import axios from 'axios';
+import { getToken } from './auth';
 
 export const baseUrl = 'http://localhost:3001/api';
+
+const api = axios.create({
+  baseURL: baseUrl
+});
+
+api.interceptors.request.use(async config => {
+  const token = getToken();
+
+  if (token) {
+    config.headers.token = token;
+  }
+
+  return config;
+});
 
 type UserLogin = {
   userEmail: string;
@@ -8,7 +23,7 @@ type UserLogin = {
 }
 
 export const login = async ({userEmail, password}: UserLogin) => {
-  return await axios.post(`${baseUrl}/login`, {userEmail, password});
+  return await api.post(`${baseUrl}/login`, {userEmail, password});
 };
 
 type UserRegister = UserLogin & {
@@ -16,11 +31,11 @@ type UserRegister = UserLogin & {
 }
 
 export const createUser = async ({userName, userEmail, password}: UserRegister) => {
-  return await axios.post(`${baseUrl}/user`, {userName, userEmail, password});
+  return await api.post(`${baseUrl}/user`, {userName, userEmail, password});
 };
 
-export const getUserProfile = async (userEmail: string, token = '') => {
-  return await axios.get(`${baseUrl}/user?userEmail=${userEmail}`, { headers: {'token': token} });
+export const getUserProfile = async (userEmail: string) => {
+  return await api.get(`${baseUrl}/user?userEmail=${userEmail}`);
 };
 
 type UserProfile = {
@@ -29,16 +44,16 @@ type UserProfile = {
   id: number;
 };
 
-export const updateUserProfile = async ({userName, userEmail, id}: UserProfile, token = '') => {
-  return await axios.put(`${baseUrl}/user`, { headers: {'token': token}, data: {user: { userName, userEmail, id }} });
+export const updateUserProfile = async ({userName, userEmail, id}: UserProfile) => {
+  return await api.put(`${baseUrl}/user`, { data: {user: { userName, userEmail, id }} });
 };
 
-export const getMarvelData = async (term: string, token = '') => {
-  return axios.get(`${baseUrl}/marvel?searchType=${term}`, {headers: {'token': token}});
+export const getMarvelData = async (term: string) => {
+  return api.get(`${baseUrl}/marvel?searchType=${term}`);
 };
 
-export const getMarvelDataByID = async (itemID: string, term: string, token = '') => {
-  return await axios.get(`${baseUrl}/marvel/${itemID}?searchType=${term}`, {headers: {'token': token}});
+export const getMarvelDataByID = async (itemID: string, term: string) => {
+  return await api.get(`${baseUrl}/marvel/${itemID}?searchType=${term}`);
 };
 
 type Favorite = {
@@ -47,22 +62,18 @@ type Favorite = {
   favoriteType: 'characters' | 'comics';
 };
 
-export const createFavorite = async ({userID, favoriteID, favoriteType}: Favorite, token = '') => {
-  return await axios.post(`${baseUrl}/favorite`, {
-    headers: {'token': token},
+export const createFavorite = async ({userID, favoriteID, favoriteType}: Favorite) => {
+  return await api.post(`${baseUrl}/favorite`, {
     data: { favorite: { userID, favoriteID, favoriteType } }
   });
 };
 
-export const getFavorites = async (userID: number, token = '') => {
-  return await axios.get(`${baseUrl}/favorite?userID=${userID}`, {
-    headers: {'token': token}
-  });
+export const getFavorites = async (userID: number) => {
+  return await api.get(`${baseUrl}/favorite?userID=${userID}`);
 };
 
-export const removeFavorite = async ({userID, favoriteID}: Omit<Favorite, 'favoriteType'>, token = '') => {
-  return axios.delete(`${baseUrl}/favorite`, {
-    data: { favorite: { userID, favoriteID } },
-    headers: {'token': token}
+export const removeFavorite = async ({userID, favoriteID}: Omit<Favorite, 'favoriteType'>) => {
+  return api.delete(`${baseUrl}/favorite`, {
+    data: { favorite: { userID, favoriteID } }
   });
 };
